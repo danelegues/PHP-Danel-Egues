@@ -15,18 +15,18 @@
 
         <?php
             function encontrarFechas($texto) {
-                // Delimitadores /.../ para la expresión regular
+                
                 $patron = "/\d{1,2}\/\d{1,2}\/\d{2,4}/";
                 $fechas = array();
 
-                // Extraer todas las coincidencias de fechas
+                
                 preg_match_all($patron, $texto, $fechas);
                 
-                return $fechas[0];  // Devolver el array de fechas encontradas
+                return $fechas[0];  
             }
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                // Procesar el texto enviado por el formulario
+                
                 $texto = htmlspecialchars($_POST["texto"]);
                 $fechasEncontradas = encontrarFechas($texto);
                 
@@ -34,7 +34,7 @@
                     echo "<h2>Fechas encontradas</h2>";
                     echo "<ul>";
 
-                    // Recorrer el array con un ciclo for
+
                     for ($i = 0; $i < count($fechasEncontradas); $i++) {
                         echo "<li>" . $fechasEncontradas[$i] . "</li>";
                     }
